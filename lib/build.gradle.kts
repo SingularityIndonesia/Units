@@ -1,40 +1,43 @@
 import com.android.build.api.dsl.androidLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.android.kotlin.multiplatform.library)
+    //alias(libs.plugins.android.kotlin.multiplatform.library)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
     alias(libs.plugins.vanniktech.mavenPublish)
 }
 
-group = "io.github.kotlin"
+group = "com.singularityuniverse.lib"
 version = "1.0.0"
 
 kotlin {
     jvm()
-    androidLibrary {
-        namespace = "com.singularityuniverse.lib_units"
-        compileSdk = libs.versions.android.compileSdk.get().toInt()
-        minSdk = libs.versions.android.minSdk.get().toInt()
+    //androidLibrary {
+    //    namespace = "com.singularityuniverse.lib.units"
+    //    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    //    minSdk = libs.versions.android.minSdk.get().toInt()
 
-        withJava() // enable java compilation support
-        withHostTestBuilder {}.configure {}
-        withDeviceTestBuilder {
-            sourceSetTreeName = "test"
-        }
+    //    withJava() // enable java compilation support
+    //    withHostTestBuilder {}.configure {}
+    //    withDeviceTestBuilder {
+    //        sourceSetTreeName = "test"
+    //    }
 
-        compilations.configureEach {
-            compilerOptions.configure {
-                jvmTarget.set(
-                    JvmTarget.JVM_11
-                )
-            }
-        }
-    }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-    linuxX64()
+    //    compilations.configureEach {
+    //        compilerOptions.configure {
+    //            jvmTarget.set(
+    //                JvmTarget.JVM_11
+    //            )
+    //        }
+    //    }
+    //}
+    // iosX64()
+    // iosArm64()
+    // iosSimulatorArm64()
+    // linuxX64()
 
     sourceSets {
         commonMain {
@@ -45,11 +48,23 @@ kotlin {
         }
 
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+            implementation(libs.androidx.lifecycle.viewmodelCompose)
+            implementation(libs.androidx.lifecycle.runtimeCompose)
         }
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(libs.kotlinx.coroutinesSwing)
         }
     }
 }
