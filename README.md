@@ -17,8 +17,8 @@ A unit is intended to be context-invariant: its definition remains stable and co
 Context wrapping produces what can be described as contextual variants: interpretations or usages of the same invariant unit under different surrounding contexts. These variants do not modify the unit; instead, they leverage the unit by enclosing it with domain-specific rules, constraints, or semantics.
 
 By treating context as something that surrounds a unit—rather than something encoded within it—systems preserve:
-•	semantic clarity,
-•	explicit domain boundaries,
-•	and the ability to reuse and reason about units independently.
+-	semantic clarity, 
+-	explicit domain boundaries, 
+-	and the ability to reuse and reason about units independently.
 
 For this reason, context leveraging and wrapping is considered a preferred practice within Units. It ensures that domain meaning remains visible, deliberate, and external, while the units themselves remain stable, composable, and free from hidden coupling.
