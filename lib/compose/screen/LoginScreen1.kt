@@ -27,13 +27,13 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 private fun Preview() {
-    LoginScreen {
+    LoginScreen1 {
 
     }
 }
 
 @Composable
-fun LoginScreen(
+fun LoginScreen1(
     userName: TextFieldState = remember { TextFieldState() },
     password: TextFieldState = remember { TextFieldState() },
     onLogin: () -> Unit = {}
