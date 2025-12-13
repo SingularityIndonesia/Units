@@ -32,5 +32,5 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-include(":jvm-context")
+include(":example:jvm-context")
 include(":lib")
