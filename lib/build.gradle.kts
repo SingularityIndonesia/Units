@@ -38,7 +38,10 @@ kotlin {
 
     sourceSets {
         commonMain {
-            kotlin.srcDirs("common")
+            kotlin.srcDirs("compose")
+            kotlin.srcDirs("retrofit")
+            kotlin.srcDirs("ktor")
+            kotlin.srcDirs("locale")
         }
 
         commonMain.dependencies {
