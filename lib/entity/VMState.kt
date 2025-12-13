@@ -2,12 +2,12 @@
 /**
  * Override this error lifter to modify the error resolver
  */
-var ErrorLifter = { e: Throwable ->
+var VMStateErrorLifter = { e: Throwable ->
     failed(Exception(e))
 }
 
 fun Throwable.liftError(): VMState<Nothing> {
-    return ErrorLifter(this)
+    return VMStateErrorLifter(this)
 }
 // endregion
 
