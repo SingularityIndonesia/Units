@@ -1,4 +1,3 @@
-// region Lifter
 /**
  * Override this error lifter to modify the error resolver
  */
@@ -6,16 +5,15 @@ var VMStateErrorLifter = { e: Throwable ->
     failed(Exception(e))
 }
 
-fun Throwable.liftError(): VMState<Nothing> {
-    return VMStateErrorLifter(this)
-}
-// endregion
-
 // region Utils
 suspend fun <T : Any> exec(bloc: suspend () -> T): VMState<T> {
     return runCatching { bloc.invoke() }
         .map { success(it) }
         .getOrElse { it.liftError() }
+}
+
+fun Throwable.liftError(): VMState<Nothing> {
+    return VMStateErrorLifter(this)
 }
 
 fun idle() = VMState.Idle
