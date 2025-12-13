@@ -32,7 +32,7 @@ private fun Preview() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        PhoneNumberInput(
+        PhoneNumberInput1(
             modifier = Modifier.width(220.dp),
             countryCode = "+62",
             hint = "895 xxxx xxxx",
@@ -44,7 +44,7 @@ private fun Preview() {
 }
 
 @Composable
-fun PhoneNumberInput(
+fun PhoneNumberInput1(
     modifier: Modifier = Modifier,
     state: TextFieldState = remember { TextFieldState() },
     countryCode: String = "",
