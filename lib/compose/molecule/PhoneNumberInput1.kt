@@ -23,10 +23,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import utils.DefaultPhoneOutputTransformation
+import utils.plus
 
 @Preview
 @Composable
@@ -41,9 +43,9 @@ fun PhoneNumberInput1Preview() {
             countryCode = "+62",
             hint = "895-xxxx-xxxx",
             outputTransformation = DefaultPhoneOutputTransformation,
-            keyboardOptions = KeyboardOptions.Default.copy(
-                keyboardType = KeyboardType.Number
-            )
+            keyboardOptions = KeyboardOptions.Default +
+                    KeyboardType.Number +
+                    ImeAction.Next
         )
     }
 }
