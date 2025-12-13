@@ -47,6 +47,8 @@ kotlin {
             kotlin.srcDirs("ktor")
             kotlin.srcDirs("locale")
             kotlin.srcDirs("entity")
+            kotlin.srcDirs("broadcastreceiver")
+            kotlin.srcDirs("utils")
         }
 
         commonMain.dependencies {
