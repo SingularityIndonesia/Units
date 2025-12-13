@@ -15,7 +15,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.OutputTransformation
 import androidx.compose.foundation.text.input.TextFieldDecorator
 import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.foundation.text.input.insert
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,7 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import utils.INDONESIAN_PHONE_OUTPUT_TRANSFORMATION
+import utils.DEFAULT_PHONE_OUTPUT_TRANSFORMATION
 
 @Preview
 @Composable
@@ -41,7 +40,7 @@ fun PhoneNumberInput1Preview() {
             state = rememberTextFieldState("89520000366"),
             countryCode = "+62",
             hint = "895-xxxx-xxxx",
-            outputTransformation = INDONESIAN_PHONE_OUTPUT_TRANSFORMATION,
+            outputTransformation = DEFAULT_PHONE_OUTPUT_TRANSFORMATION,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number
             )
