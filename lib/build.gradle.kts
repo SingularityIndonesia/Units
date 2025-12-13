@@ -46,6 +46,7 @@ kotlin {
             kotlin.srcDirs("retrofit")
             kotlin.srcDirs("ktor")
             kotlin.srcDirs("locale")
+            kotlin.srcDirs("entity")
         }
 
         commonMain.dependencies {
