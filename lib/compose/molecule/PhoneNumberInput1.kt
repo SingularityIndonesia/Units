@@ -26,7 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import utils.DEFAULT_PHONE_OUTPUT_TRANSFORMATION
+import utils.DefaultPhoneOutputTransformation
 
 @Preview
 @Composable
@@ -40,7 +40,7 @@ fun PhoneNumberInput1Preview() {
             state = rememberTextFieldState("89520000366"),
             countryCode = "+62",
             hint = "895-xxxx-xxxx",
-            outputTransformation = DEFAULT_PHONE_OUTPUT_TRANSFORMATION,
+            outputTransformation = DefaultPhoneOutputTransformation,
             keyboardOptions = KeyboardOptions.Default.copy(
                 keyboardType = KeyboardType.Number
             )
