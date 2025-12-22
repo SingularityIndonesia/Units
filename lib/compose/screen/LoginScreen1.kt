@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,10 +33,17 @@ private fun Preview() {
     }
 }
 
+class LoginScreen1State {
+    var userName: TextFieldState = TextFieldState()
+    var password: TextFieldState = TextFieldState()
+    val userNameHint: String = "username"
+    val passwordHint: String = "password"
+    val submitActionLabel: String = "Login"
+}
+
 @Composable
 fun LoginScreen1(
-    userName: TextFieldState = remember { TextFieldState() },
-    password: TextFieldState = remember { TextFieldState() },
+    state: LoginScreen1State = remember { LoginScreen1State() },
     onLogin: () -> Unit = {}
 ) {
     Scaffold {
@@ -51,21 +59,21 @@ fun LoginScreen1(
             ) {
                 Input(
                     modifier = Modifier.width(300.dp),
-                    state = userName,
-                    hint = "username"
+                    state = state.userName,
+                    hint = state.userNameHint
                 )
 
                 Input(
                     modifier = Modifier.width(300.dp),
-                    state = password,
-                    hint = "password"
+                    state = state.password,
+                    hint = state.passwordHint
                 )
 
                 Button(
                     modifier = Modifier.defaultMinSize(300.dp, 0.dp),
                     onClick = onLogin
                 ) {
-                    Text("Login")
+                    Text(state.submitActionLabel)
                 }
             }
         }
