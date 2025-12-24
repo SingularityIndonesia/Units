@@ -116,7 +116,7 @@ fun PreviewPieChart1Animated() {
         ) {
             PieChart1(
                 modifier = Modifier
-                    .size(100.dp)
+                    .size(300.dp)
                     .border(1.dp, Color.Black),
                 state = state
             )
@@ -141,7 +141,7 @@ fun PreviewPieChart1() {
     ) {
         PieChart1(
             modifier = Modifier
-                .size(100.dp)
+                .size(300.dp)
                 .border(1.dp, Color.Black),
             state = state
         )
