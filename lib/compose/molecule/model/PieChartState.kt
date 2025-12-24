@@ -1,9 +1,8 @@
-package molecule.chart
+package molecule.model
 
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import molecule.chart.ChartItem
 
 data class PieChartState(
     @Stable

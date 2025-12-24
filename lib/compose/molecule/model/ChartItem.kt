@@ -1,4 +1,4 @@
-package molecule.chart
+package molecule.model
 
 import androidx.compose.ui.graphics.Color
 

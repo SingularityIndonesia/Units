@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import animator.ProgressValueAnimator
-import molecule.chart.ChartItem
-import molecule.chart.PieChartState
+import molecule.model.ChartItem
+import molecule.model.PieChartState
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import utils.LocalProgressAnimatorValue
 import utils.donout
