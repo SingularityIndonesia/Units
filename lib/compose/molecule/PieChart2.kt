@@ -23,7 +23,7 @@ import utils.LocalProgressAnimatorValue
 import utils.donout
 
 @Composable
-fun PieChart1(
+fun PieChart2(
     modifier: Modifier = Modifier,
     state: PieChartState = remember { PieChartState() }
 ) {
@@ -62,7 +62,7 @@ private fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "Units",
     ) {
-        PreviewPieChart1Animated()
+        PreviewPieChart2Animated()
     }
 }
 
@@ -101,20 +101,15 @@ private val exampleChartItems = listOf(
 
 @Preview
 @Composable
-fun PreviewPieChart1Animated() {
-    val state = remember {
-        PieChartState(
-            maxValue = 100f,
-            items = exampleChartItems
-        )
-    }
+fun PreviewPieChart2Animated() {
+    val state = remember { PieChartState(exampleChartItems) }
 
     ProgressValueAnimator {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            PieChart1(
+            PieChart2(
                 modifier = Modifier
                     .size(100.dp)
                     .border(1.dp, Color.Black),
@@ -126,7 +121,7 @@ fun PreviewPieChart1Animated() {
 
 @Preview
 @Composable
-fun PreviewPieChart1() {
+fun PreviewPieChart2() {
     val state = remember {
         PieChartState(
             maxValue = 120f,

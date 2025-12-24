@@ -9,4 +9,5 @@ data class PieChartState(
     val items: List<ChartItem> = emptyList(),
     val startAngleDeg: Float = 0f,
     val preferredThickness: Dp = 10.dp,
+    val maxValue: Float = 100f,
 )
