@@ -33,7 +33,7 @@ fun PieChart1(
         modifier = modifier
     ) {
         val radius = ((size.height.takeIf { it >= size.width } ?: size.width) / 2f)
-        val thickness = radius * 50 / 100f / state.items.size
+        val thickness = radius * state.thicknessPercent / 100f / state.items.size
 
         rotate(state.startAngleDeg) {
             translate(center.x, center.y) {
@@ -130,6 +130,7 @@ fun PreviewPieChart1() {
     val state = remember {
         PieChartState(
             maxValue = 120f,
+            thicknessPercent = 30f,
             items = exampleChartItems
         )
     }
