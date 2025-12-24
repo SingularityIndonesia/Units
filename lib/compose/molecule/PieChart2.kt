@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,25 +30,26 @@ fun PieChart2(
     state: PieChartState = remember { PieChartState() }
 ) {
     val progressAnimator = LocalProgressAnimatorValue.current
+    val total: Float by derivedStateOf { state.items.sumOf { it.value.toDouble() }.toFloat() }
 
     Canvas(
         modifier = modifier
     ) {
         val radius = ((size.height.takeIf { it >= size.width } ?: size.width) / 2f)
-        val thickness = radius * 50 / 100f / state.items.size
 
-        rotate(state.startAngleDeg) {
-            translate(center.x, center.y) {
-                state.items.forEachIndexed { i, e ->
-                    val progress = (e.value * 360 / state.maxValue) *
-                            99.99f / 100f * // so the chart won't collapse to 100%
-                            progressAnimator / 100f
+        state.items.forEachIndexed { i, e ->
+            val progressDeg = (e.value * 360 / total) *
+                    99.99f / 100f * // so the chart won't collapse to 100%
+                    progressAnimator / 100f
 
+            val startAngel = (state.items.take(i).map { it.value }.sum() / total * 360f) * progressAnimator / 100f
+            rotate(startAngel ) {
+                translate(center.x, center.y) {
                     drawPath(
                         path = donout(
-                            outerRadius = radius - (i * thickness),
-                            thickness = thickness,
-                            sweepAngle = progress,
+                            outerRadius = radius,
+                            thickness = state.thicknessPercent / 100f * radius,
+                            sweepAngle = progressDeg,
                         ),
                         color = e.color
                     )
@@ -133,7 +136,7 @@ fun PreviewPieChart2() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        PieChart1(
+        PieChart2(
             modifier = Modifier
                 .size(100.dp)
                 .border(1.dp, Color.Black),

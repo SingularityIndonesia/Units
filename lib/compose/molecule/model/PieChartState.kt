@@ -8,6 +8,6 @@ data class PieChartState(
     @Stable
     val items: List<ChartItem> = emptyList(),
     val startAngleDeg: Float = 0f,
-    val preferredThickness: Dp = 10.dp,
+    val thicknessPercent: Float = 50f,
     val maxValue: Float = 100f,
 )
