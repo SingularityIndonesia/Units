@@ -1,28 +1,29 @@
-/**
- * Override this error lifter to modify the error resolver
- */
-var VMStateErrorLifter = { e: Throwable ->
+import VMState.Companion.failed
+import VMState.Companion.success
+
+// region Utils
+val VMStateErrorLifter = { e: Throwable ->
     failed(Exception(e))
 }
 
-// region Utils
-suspend fun <T : Any> exec(bloc: suspend () -> T): VMState<T> {
+suspend fun <T : Any> exec(
+    bloc: suspend () -> T,
+    errorLifter: (Throwable) -> VMState.Failed = VMStateErrorLifter
+): VMState<T> {
     return runCatching { bloc.invoke() }
         .map { success(it) }
-        .getOrElse { it.liftError() }
+        .getOrElse{ errorLifter(it) }
 }
-
-fun Throwable.liftError(): VMState<Nothing> {
-    return VMStateErrorLifter(this)
-}
-
-fun idle() = VMState.Idle
-fun loading() = VMState.Loading
-fun <T : Any> success(data: T) = VMState.Success(data)
-fun failed(e: Exception) = VMState.Failed(e)
 // endregion
 
 sealed interface VMState<out T : Any> {
+    companion object {
+        fun idle() = VMState.Idle
+        fun loading() = VMState.Loading
+        fun <T : Any> success(data: T) = VMState.Success(data)
+        fun failed(e: Exception) = VMState.Failed(e)
+    }
+
     object Idle : VMState<Nothing>
     object Loading : VMState<Nothing>
     data class Success<T : Any>(val data: T) : VMState<T>
