@@ -22,7 +22,7 @@ import molecule.model.ChartItem
 import molecule.model.PieChartState
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import utils.LocalProgressAnimatorValue
-import utils.donout
+import utils.donut
 
 @Composable
 fun PieChart2(
@@ -46,7 +46,7 @@ fun PieChart2(
             rotate(startAngel ) {
                 translate(center.x, center.y) {
                     drawPath(
-                        path = donout(
+                        path = donut(
                             outerRadius = radius,
                             thickness = state.thicknessPercent / 100f * radius,
                             sweepAngle = progressDeg,

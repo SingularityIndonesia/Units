@@ -4,9 +4,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathFillType
-import androidx.compose.ui.graphics.drawscope.DrawScope
 
-fun DrawScope.donout(
+fun donut(
     outerRadius: Float,
     thickness: Float,
     sweepAngle: Float,
