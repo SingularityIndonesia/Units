@@ -1,7 +1,3 @@
-import com.android.build.api.dsl.androidLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     //alias(libs.plugins.android.kotlin.multiplatform.library)
@@ -42,12 +38,13 @@ kotlin {
 
     sourceSets {
         commonMain {
+            kotlin.srcDirs("broadcastreceiver")
             kotlin.srcDirs("compose")
-            kotlin.srcDirs("retrofit")
+            kotlin.srcDirs("entity")
+            kotlin.srcDirs("koog")
             kotlin.srcDirs("ktor")
             kotlin.srcDirs("locale")
-            kotlin.srcDirs("entity")
-            kotlin.srcDirs("broadcastreceiver")
+            kotlin.srcDirs("retrofit")
             kotlin.srcDirs("utils")
         }
 
