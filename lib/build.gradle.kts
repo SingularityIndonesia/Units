@@ -58,6 +58,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.ktor.client)
+            implementation(libs.ktor.client.cio)
             implementation(libs.kotlinx.serialization)
         }
 
